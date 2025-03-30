@@ -8,12 +8,12 @@
             <div class="hidden md:flex space-x-6">
                 <router-link to="/" class="text-gray-700 hover:text-yellow-600 transition">Inicio</router-link>
                 <router-link to="/" class="text-gray-700 hover:text-yellow-600 transition">Tienda</router-link>
-                <router-link to="/" class="text-gray-700 hover:text-yellow-600 transition">Nosotros</router-link>
-                <router-link to="/" class="text-gray-700 hover:text-yellow-600 transition">Contacto</router-link>
+                <router-link to="/productos" class="text-gray-700 hover:text-yellow-600 transition">Productos</router-link>
+                <router-link to="/contacto" class="text-gray-700 hover:text-yellow-600 transition">Contacto</router-link>
             </div>
 
             <!-- Dropdown de Usuario -->
-            <div class="relative">
+            <div class="relative hidden md:flex">
                 <button @click="toggleDropdown" class="text-gray-700 hover:text-purple-600 flex items-center">
                     <span class="mr-2">Cuenta</span>
                     <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"
@@ -48,9 +48,9 @@
         <div v-if="menuOpen" class="md:hidden bg-white py-2 px-4 shadow-lg">
             <router-link to="/" class="block text-gray-700 py-2 hover:text-yellow-600 transition">Inicio</router-link>
             <router-link to="/" class="block text-gray-700 py-2 hover:text-yellow-600 transition">Tienda</router-link>
-            <router-link to="/about"
-                class="block text-gray-700 py-2 hover:text-yellow-600 transition">Nosotros</router-link>
-            <router-link to="/"
+            <router-link to="/productos"
+                class="block text-gray-700 py-2 hover:text-yellow-600 transition">Productos</router-link>
+            <router-link to="/contacto"
                 class="block text-gray-700 py-2 hover:text-yellow-600 transition">Contacto</router-link>
             <div class="border-t my-2"></div>
             <router-link to="/login" class="block text-gray-700 py-2 hover:text-yellow-600 transition">Iniciar
