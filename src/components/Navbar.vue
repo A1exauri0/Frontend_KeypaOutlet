@@ -7,7 +7,6 @@
             <!-- Menú -->
             <div class="hidden md:flex space-x-6">
                 <router-link to="/" class="text-gray-700 hover:text-yellow-600 transition">Inicio</router-link>
-                <router-link to="/" class="text-gray-700 hover:text-yellow-600 transition">Tienda</router-link>
                 <router-link to="/productos" class="text-gray-700 hover:text-yellow-600 transition">Productos</router-link>
                 <router-link to="/contacto" class="text-gray-700 hover:text-yellow-600 transition">Contacto</router-link>
             </div>
@@ -47,7 +46,6 @@
         <!-- Menú Móvil -->
         <div v-if="menuOpen" class="md:hidden bg-white py-2 px-4 shadow-lg">
             <router-link to="/" class="block text-gray-700 py-2 hover:text-yellow-600 transition">Inicio</router-link>
-            <router-link to="/" class="block text-gray-700 py-2 hover:text-yellow-600 transition">Tienda</router-link>
             <router-link to="/productos"
                 class="block text-gray-700 py-2 hover:text-yellow-600 transition">Productos</router-link>
             <router-link to="/contacto"

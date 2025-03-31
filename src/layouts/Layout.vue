@@ -1,6 +1,12 @@
 <!-- src/layouts/Layout.vue -->
 <template>
+  <header>
+    <Navbar />
+  </header>
+  
     <router-view />
+    
+    <Footer />
 </template>
 
 

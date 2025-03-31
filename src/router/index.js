@@ -9,24 +9,17 @@ import Contacto from '@/views/Contacto.vue';
 
 const routes = [
   {
+    //Layout para el cliente
     path: '/',
     component: Layout,
-    children:[
-      { path:"", component:Home},
-      { path:"productos", component:Productos},
-      { path:"contacto", component:Contacto}
+    children: [
+      { path: "", component: Home },
+      { path: "productos", component: Productos },
+      { path: "contacto", component: Contacto },
+      { path: "login", component: Login },
+      { path: "register", component: Register }
     ]
-  },
-  {
-    path: '/login',
-    name: 'Login',
-    component: Login,
-  },
-  {
-    path: '/register',
-    name: 'Register',
-    component: Register,
-  },
+  }
 ];
 
 const router = createRouter({
