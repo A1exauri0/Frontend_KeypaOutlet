@@ -7,9 +7,16 @@ import { createPinia } from 'pinia'
 import App from './App.vue'
 import router from './router'
 
-const app = createApp(App)
+// Crea la aplicación Vue
+const app = createApp(App);
 
-app.use(createPinia())
-app.use(router)
+// Usa Pinia y el router
+app.use(createPinia());
+app.use(router);
 
-app.mount('#app')
+// Cargar la sesión 
+import { useAuthStore } from './stores/auth';
+const auth = useAuthStore();
+auth.loadSession();
+
+app.mount('#app');
