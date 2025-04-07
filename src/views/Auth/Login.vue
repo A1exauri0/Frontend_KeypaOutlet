@@ -54,7 +54,12 @@ const auth = useAuthStore()
 const router = useRouter()
 
 function handleLogin() {
-  auth.login({ name: nombre.value })
-  router.push('/') // Redirige al inicio
+  if(nombre.value === 'Adrián Vázquez' && password.value === 'alex'){
+    auth.login({ name: nombre.value })
+    router.push('/') // Redirige al inicio
+  }else{
+    alert('Nombre o contraseña incorrectos')
+  }
+
 }
 </script>
