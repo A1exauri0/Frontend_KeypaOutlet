@@ -14,7 +14,7 @@
             </div>
 
             <!-- Dropdown de Usuario -->
-            <div class="relative hidden md:flex">
+            <div class="relative hidden md:flex" ref="dropdownContainer">
                 <div class="relative">
                     <button @click="toggleDropdown" class="text-gray-700 hover:text-purple-600 flex items-center">
                         <span class="mr-2">{{ auth.user ? auth.user.name : 'Cuenta' }}</span> <svg class="w-5 h-5"
@@ -90,22 +90,33 @@ export default {
     },
     computed: {
         auth() {
-            return useAuthStore(); // Accede a la store
+            return useAuthStore();
         },
-        // Obtenemos el estado de autenticación de la store
         isAuthenticated() {
             const auth = useAuthStore();
             return auth.isAuthenticated;
         },
     },
+    mounted() {
+        window.addEventListener('click', this.handleClickOutside);
+    },
+    beforeUnmount() {
+        window.removeEventListener('click', this.handleClickOutside);
+    },
     methods: {
         toggleDropdown() {
             this.dropdownOpen = !this.dropdownOpen;
         },
+        handleClickOutside(event) {
+            const dropdown = this.$refs.dropdownContainer;
+            if (dropdown && !dropdown.contains(event.target)) {
+                this.dropdownOpen = false;
+            }
+        },
         handleLogout() {
             const auth = useAuthStore();
             auth.logout();
-            this.$router.push("/login"); // Redirige al login al cerrar sesión
+            this.$router.push("/login");
         },
     },
 };

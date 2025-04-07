@@ -6,7 +6,7 @@ import Login from '@/views/Auth/Login.vue';
 import Register from '@/views/Auth/Register.vue';
 import Productos from '@/views/Productos.vue';
 import Contacto from '@/views/Contacto.vue';
-import { useAuthStore } from '../stores/auth'; // Importa la store
+import { useAuthStore } from '../stores/auth'; 
 
 const routes = [
   {
