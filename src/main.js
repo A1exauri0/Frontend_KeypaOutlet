@@ -1,5 +1,6 @@
 // import './assets/main.css'
 import './output.css'
+import axios from 'axios'
 
 import { createApp } from 'vue'
 import { createPinia } from 'pinia'
@@ -9,6 +10,8 @@ import router from './router'
 
 // Crea la aplicación Vue
 const app = createApp(App);
+axios.defaults.baseURL = 'http://localhost:8000/api'; // URL del backend Laravel
+axios.defaults.withCredentials = true; // Para enviar cookies de sesión
 
 // Usa Pinia y el router
 app.use(createPinia());
