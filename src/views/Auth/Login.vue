@@ -4,7 +4,7 @@
     <div class="bg-white p-8 rounded-lg shadow-lg w-full max-w-md">
       <h1 class="text-3xl font-bold text-center text-gray-700 mb-8">Iniciar sesión</h1>
 
-      <form class="space-y-6" @submit.prevent="handleLogin">
+      <form class="space-y-6" @submit.prevent="spaLogin()">
         <!-- <div>
           <label for="email" class="block text-sm font-medium text-gray-600">Correo electrónico</label>
           <input v-model="email" type="email" id="email"
@@ -53,13 +53,33 @@ const password = ref('')
 const auth = useAuthStore()
 const router = useRouter()
 
-function handleLogin() {
-  if(nombre.value === 'Adrián Vázquez' && password.value === 'alex'){
-    auth.login({ name: nombre.value })
-    router.push('/') // Redirige al inicio
-  }else{
-    alert('Nombre o contraseña incorrectos')
-  }
+async function spaLogin(){
+  try{
+    await axios.get('/sanctum/csrf-cookie')
+    await axios.post('/login', {
+      // name: nombre.value,
+      // password: password.value
+      name: 'Prueba',
+      password: '123456789'
+    })
 
+    console.log(response)
+    useCounterStore.isLoggedIn = true
+    router.push('/')
+  }catch (error) {
+    console.log(error)
+  }
 }
+
+// function handleLogin() {
+//   if(nombre.value === 'Adrián Vázquez' && password.value === 'alex'){
+//     auth.login({ name: nombre.value })
+//     router.push('/') // Redirige al inicio
+//   }else{
+//     alert('Nombre o contraseña incorrectos')
+//   }
+
+// }
+
+
 </script>
