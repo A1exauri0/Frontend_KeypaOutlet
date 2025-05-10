@@ -3,7 +3,7 @@ import './output.css'
 import axios from 'axios'
 
 // Configuración de Axios para la API
-axios.defaults.baseURL = 'https://localhost';
+axios.defaults.baseURL = 'http://localhost';
 axios.defaults.headers.common['Accept'] = 'application/json';
 axios.defaults.withCredentials = true; // Permitir cookies de terceros
 axios.defaults.withXSRFToken = true; // Permitir el uso de XSRF token

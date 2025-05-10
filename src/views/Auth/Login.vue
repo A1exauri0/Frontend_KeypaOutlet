@@ -12,10 +12,10 @@
             placeholder="ejemplo@correo.com" />
         </div> -->
         <div>
-          <label for="name" class="block text-sm font-medium text-gray-600">Nombre</label>
-          <input v-model="nombre" type="text" id="name"
+          <label for="name" class="block text-sm font-medium text-gray-600">email</label>
+          <input v-model="email" type="text" id="name"
             class="mt-2 block w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500"
-            placeholder="Ingresa tu nombre" />
+            placeholder="Ingresa tu email" />
         </div>
 
         <div>
@@ -45,41 +45,37 @@
 
 <script setup>
 import { ref } from 'vue'
-import { useAuthStore } from '@/stores/auth'
 import { useRouter } from 'vue-router'
+import axios from 'axios'
+import { useAuthStore } from '@/stores/auth' // este es tu archivo
 
-const nombre = ref('')
+const email = ref('')
 const password = ref('')
-const auth = useAuthStore()
 const router = useRouter()
+const authStore = useAuthStore()
 
-async function spaLogin(){
-  try{
+async function spaLogin() {
+  try {
+    // Paso 1: Obtener el token CSRF
     await axios.get('/sanctum/csrf-cookie')
+
+    // Paso 2: Iniciar sesión
     await axios.post('/login', {
-      // name: nombre.value,
-      // password: password.value
-      name: 'Prueba',
-      password: '123456789'
+      email: email.value,
+      password: password.value
     })
 
-    console.log(response)
-    useCounterStore.isLoggedIn = true
+    // Paso 3: Obtener usuario autenticado
+    const userResponse = await axios.get('/api/user')
+
+    // Paso 4: Guardar usuario en el store
+    authStore.login(userResponse.data)
+
+    // Paso 5: Redirigir
     router.push('/')
-  }catch (error) {
-    console.log(error)
+  } catch (error) {
+    console.error(error.response?.data || error)
   }
 }
-
-// function handleLogin() {
-//   if(nombre.value === 'Adrián Vázquez' && password.value === 'alex'){
-//     auth.login({ name: nombre.value })
-//     router.push('/') // Redirige al inicio
-//   }else{
-//     alert('Nombre o contraseña incorrectos')
-//   }
-
-// }
-
-
 </script>
+
