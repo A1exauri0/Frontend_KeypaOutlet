@@ -41,7 +41,7 @@ router.beforeEach((to, from, next) => {
   else if ((to.path === '/login' || to.path === '/register') && auth.isAuthenticated) {
     alert('Ya has iniciado sesión.');
     next('/'); 
-  } 
+  }
   else {
     next();
   }
