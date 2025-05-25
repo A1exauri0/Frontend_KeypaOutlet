@@ -80,6 +80,8 @@
 
 <script>
 import { useAuthStore } from "@/stores/auth";
+import axios from "axios";
+import router from "@/router";
 
 export default {
     data() {
@@ -113,11 +115,34 @@ export default {
                 this.dropdownOpen = false;
             }
         },
-        handleLogout() {
-            const auth = useAuthStore();
-            auth.logout();
-            this.$router.push("/login");
-        },
+async handleLogout() {
+    const authStore = useAuthStore();
+    try {
+        console.log('Iniciando logout...');
+        await axios.post('/logout');
+        console.log('Backend logout completado.');
+
+        authStore.logout();
+        console.log('Pinia store limpiado. isAuthenticated:', authStore.isAuthenticated);
+
+        console.log('Intentando redirigir a /login...');
+        // Intenta esperar la promesa de router.push para ver si se completa o falla
+        await router.push('/login');
+        console.log('Redirección a /login solicitada.');
+
+    } catch (error) {
+        console.error('Error durante el logout o redirección:', error);
+        // Asegúrate de limpiar el estado local incluso si hay un error
+        authStore.logout();
+        // Intenta redirigir de nuevo en caso de error previo a la redirección original
+        // Podrías añadir un .catch() aquí también para la redirección de fallback
+        router.push('/login').catch(navError => {
+            console.error('Error en la redirección de fallback:', navError);
+            // Si todo falla, un último recurso
+            // window.location.href = '/login';
+        });
+    }
+}
     },
 };
 </script>
