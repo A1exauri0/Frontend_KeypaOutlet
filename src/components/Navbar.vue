@@ -7,8 +7,8 @@
             <!-- Menú -->
             <div class="hidden md:flex space-x-6">
                 <router-link to="/" class="text-gray-700 hover:text-yellow-600 transition">Inicio</router-link>
-                <router-link to="/productos"
-                    class="text-gray-700 hover:text-yellow-600 transition">Productos</router-link>
+                <router-link to="/catalogo"
+                    class="text-gray-700 hover:text-yellow-600 transition">Catalogo</router-link>
                 <router-link to="/contacto"
                     class="text-gray-700 hover:text-yellow-600 transition">Contacto</router-link>
             </div>
