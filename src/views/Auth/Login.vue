@@ -12,8 +12,8 @@
             placeholder="ejemplo@correo.com" />
         </div> -->
         <div>
-          <label for="name" class="block text-sm font-medium text-gray-600">email</label>
-          <input v-model="email" type="text" id="name"
+          <label for="email" class="block text-sm font-medium text-gray-600">Email</label>
+          <input v-model="email" type="text" id="email"
             class="mt-2 block w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500"
             placeholder="Ingresa tu email" />
         </div>
