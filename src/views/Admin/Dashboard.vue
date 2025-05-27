@@ -1,5 +1,5 @@
 <template>
-  <div class="pt-16 p-6 sm:ml-64 bg-white dark:bg-purple-900 min-h-screen">
+<div class="pt-20 sm:pt-16 p-6 sm:ml-64 bg-white dark:bg-purple-900 min-h-screen">
 
     <!-- =======================
          Top Cards Section
